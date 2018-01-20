@@ -32,8 +32,8 @@ public class Main extends Application {
         Label labelPower = new Label("Введите степень многочлена");
         TextField textFieldPower = new TextField(DEFAULT_POWER);
         textFieldPower.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                textFieldPower.setText(newValue.replaceAll("[^\\d]", ""));
+            if (!newValue.matches("-?[1-9]\\d*|0")) {
+                textFieldPower.setText(newValue.replaceAll("[^-?[1-9]\\d*|0]", ""));
             }
         });
 
@@ -41,7 +41,7 @@ public class Main extends Application {
         TextField textFieldStart = new TextField(DEFAULT_START);
         textFieldStart.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                textFieldStart.setText(newValue.replaceAll("[^\\d]", ""));
+                textFieldStart.setText(newValue.replaceAll("[^-?[1-9]\\d*|0]]", ""));
             }
         });
 
@@ -49,7 +49,7 @@ public class Main extends Application {
         TextField textFieldEnd = new TextField(DEFAULT_END);
         textFieldEnd.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
-                textFieldEnd.setText(newValue.replaceAll("[^\\d]", ""));
+                textFieldEnd.setText(newValue.replaceAll("[^-?[1-9]\\d*|0]", ""));
             }
         });
 
@@ -156,7 +156,7 @@ public class Main extends Application {
         xAxis.setLabel("Number of Month");
         //creating the chart
         final LineChart<Number, Number> lineChart =
-                new LineChart<Number, Number>(xAxis, yAxis);
+                new LineChart<>(xAxis, yAxis);
 
         lineChart.setTitle("Stock Monitoring, 2010");
         return lineChart;
